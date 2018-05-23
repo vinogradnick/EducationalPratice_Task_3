@@ -25,18 +25,21 @@ namespace EducationalPratice_Task_3
         static int function(int x)
         {
             int y;
-            if (x < 0)
+            if (x < 2)
+            {
                 y = Math.Abs(x);
-            else if (x < 2)
-                y = x;
+            }
             else
             {
-                if (x > 2 && x < 3)
+                if (x >= 1 && x <= 2)
                 {
                     y = 1;
                 }
                 else
-                    y = x - (x + 1);
+                {
+                    y = 5 - 2 * x;
+
+                }
             }
         }
     }
