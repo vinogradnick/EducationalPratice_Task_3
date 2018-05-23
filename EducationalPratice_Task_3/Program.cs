@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Validator;
 
 namespace EducationalPratice_Task_3
 {
@@ -19,28 +20,43 @@ namespace EducationalPratice_Task_3
         static Random random = new Random();
         static void Main(string[] args)
         {
-           int
+            Console.WriteLine("Вычисление функии f(a)");
+            Console.WriteLine("Введите число для вычисления");
+            double a = Double();
+            Console.WriteLine($"y={Function(a)} при x={a}");
         }
-
-        static int function(int x)
+        /// <summary>
+        /// Функция 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        static double Function(double x)
         {
-            int y;
+            double y;
             if (x < 2)
-            {
                 y = Math.Abs(x);
-            }
+            else if (x >= 1 && x <= 2)
+                y = 1;
             else
+                y = 5 - 2 * x;
+            return y;
+        }
+        /// <summary>
+        /// Число для ввода
+        /// </summary>
+        /// <returns></returns>
+        static double Double()
+        {
+            double res;
+            bool ok;
+            do
             {
-                if (x >= 1 && x <= 2)
-                {
-                    y = 1;
-                }
-                else
-                {
-                    y = 5 - 2 * x;
-
-                }
-            }
+                ok = double.TryParse(Console.ReadLine(), out res);
+                ok = res > 0;
+                if (!ok)
+                    Console.WriteLine("Вы ввели неправильное число, повторите попытку \n Введите число: ");
+            } while (!ok);
+            return res;
         }
     }
 }
