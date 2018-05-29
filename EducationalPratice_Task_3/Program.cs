@@ -17,13 +17,22 @@ namespace EducationalPratice_Task_3
     /// </summary>
     class Program
     {
+    
         static Random random = new Random();
         static void Main(string[] args)
         {
-            Console.WriteLine("Вычисление функии f(a)");
-            Console.WriteLine("Введите число для вычисления");
-            double a = Double();
-            Console.WriteLine($"y={Function(a)} при x={a}");
+            char key;
+            key = 'z';
+            while (key!='q')
+            {
+                Console.WriteLine("Вычисление функии f(a)");
+                Console.Write("Введите число для вычисления :");
+                double a = Double();
+                Console.WriteLine($"y={Function(a)} при x={a}");
+                Console.WriteLine("Для выхода нажмите любую клавишу [q] \n Введите любую другую клавишу для продолжения");
+                char.TryParse(Console.ReadLine(), out key);
+            }
+           
         }
         /// <summary>
         /// Функция 
@@ -52,7 +61,6 @@ namespace EducationalPratice_Task_3
             do
             {
                 ok = double.TryParse(Console.ReadLine(), out res);
-                ok = res > 0;
                 if (!ok)
                     Console.WriteLine("Вы ввели неправильное число, повторите попытку \n Введите число: ");
             } while (!ok);
