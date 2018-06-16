@@ -1,70 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Validator;
-
 namespace EducationalPratice_Task_3
 {
-    /// <summary>
-    /// Дана действительная квадратичная матрица порядка 9
-    /// Получить целочисленную квадратную матрицу того же порядка,
-    ///  в которой элемент равен еденице, 
-    ///     если соответствующий ему элемент исходной матрицы больше элемента, 
-    ///         расположенного в его строке на главной диагонали,
-    ///  и равен нулю в противном случае.
-    /// </summary>
     class Program
     {
-    
-        static Random random = new Random();
         static void Main(string[] args)
         {
-            char key;
-            key = 'z';
-            while (key!='q')
-            {
+        
                 Console.WriteLine("Вычисление функии f(a)");
                 Console.Write("Введите число для вычисления :");
-                double a = Double();
-                Console.WriteLine($"y={Function(a)} при x={a}");
-                Console.WriteLine("Для выхода нажмите любую клавишу [q] \n Введите любую другую клавишу для продолжения");
-                char.TryParse(Console.ReadLine(), out key);
-            }
-           
+            double x = MyLibary.Input.Double();
+            double y = x < 1 ? Math.Abs(x) : (x > 1 & x < 2 ? 1 : 5 - 2 * x);
+            Console.WriteLine($"y={y} при x={x}");
+            Console.ReadKey();
+
         }
-        /// <summary>
-        /// Функция 
-        /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        static double Function(double x)
-        {
-            double y;
-            if (x < 2)
-                y = Math.Abs(x);
-            else if (x >= 1 && x <= 2)
-                y = 1;
-            else
-                y = 5 - 2 * x;
-            return y;
-        }
-        /// <summary>
-        /// Число для ввода
-        /// </summary>
-        /// <returns></returns>
-        static double Double()
-        {
-            double res;
-            bool ok;
-            do
-            {
-                ok = double.TryParse(Console.ReadLine(), out res);
-                if (!ok)
-                    Console.WriteLine("Вы ввели неправильное число, повторите попытку \n Введите число: ");
-            } while (!ok);
-            return res;
-        }
+       
     }
 }
